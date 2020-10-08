@@ -1,0 +1,59 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="format-detection" content="telephone=no"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1"><title>Home Page</title><link rel="shortcut icon" href="favicon.ico"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet"><link rel="stylesheet" href="css/font-awesome.min.css"><link rel="stylesheet" type="text/css" href="css/stylesheet.css"><script type="text/javascript" src="js/jquery-2.1.1.min.js"></script><script src="js/jquery.maskedinput.js"></script></head><body><header class="header"><div class="container block-flex header__wrapper"><div class="logo"><img src="image/logo.png" alt=""></div><div class="menu"><ul class="menu__list"><li class="menu__item"><a href="#">Сообщество</a></li><li class="menu__item"><a href="#">Как играть</a></li><li class="menu__item"><a href="#">Денежные операции</a></li></ul><div class="menu-close__wrap block-flex"><div class="menu-close"><div class="icon"><span></span> <span></span> <span></span></div></div></div></div><div class="nav-button"><span></span><div class="icon"><span></span> <span></span> <span></span></div></div><div class="header__btns"><div class="account"><div class="account__btn">Войти</div></div><div class="settings"><div class="settings__btn"></div><div class="settings__dropdown"><div class="lang block-flex hidden-xs"><a href="#" class="active" disabled>рус</a> <a href="#" class="">eng</a></div></div></div></div></div></header><div class="main-wrapper"><div class="container main-inner"><div class="column column-left"></div><div class="column-center"></div><div class="column column-right"></div></div><footer class="footer"><div class="container block-flex"><div class="footer__links block-flex"><a href="#">О PokerChess</a> <a href="#">ЧаВо</a> <a href="#">Контакты</a> <a href="#">Пользовательское соглашение</a> <a href="#">Конфиденциальность</a></div></div></footer></div><script>$(document).ready(function () {
+		if ($('.banner').length > 0) {
+
+			var hBanner = $('.banner-wrapper').height();
+
+			$('.banner-item').each(function() {
+				$(this).css('height', hBanner);
+
+				// Replace background by img in .page-section--slide 
+			  // $('.page-section--slide').each(function(){
+			      var section = $(this).find('img').attr('src');
+			      
+			      if(section == true){
+			          $(this).css({'background-color':'#fff'});
+			  
+			      }
+			      else{
+			          $(this).css({'background-image':'url(' + section + ')'});
+			    
+			      }
+			  // });
+			// End of replace background by img in .page-section--slide
+			});
+
+			$('.banner').slick({
+				slidesToShow: 1,
+			  slidesToScroll: 1,
+			  arrows: true,
+				fade: true,
+				autoplay: true,
+				autoplaySpeed: 5000,
+  			cssEase: 'ease ',
+			  adaptiveHeight: true
+			})
+		}
+
+		$(window).resize(function() {
+		    if ($('.banner').length > 0) {
+
+					var hBanner = $('.banner-wrapper').height();
+
+					$('.banner-item').each(function() {
+						$(this).css('height', hBanner);
+						var section = $(this).find('img').attr('src');
+			      
+			      if(section == true){
+			          $(this).css({'background-color':'#fff'});
+			  
+			      }
+			      else{
+			          $(this).css({'background-image':'url(' + section + ')'});
+			    
+			      }
+					});
+
+				
+				}
+		});
+	});</script><script type="text/javascript" src="js/main.js"></script></body></html>
