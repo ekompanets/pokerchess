@@ -528,6 +528,25 @@ input[type=number] {
 	background: #806b4c;
 }
 
+.dropdown {
+	position: relative;
+}
+
+.dropdown .dropdown-menu {
+	position: absolute;
+	right: 0;
+	width: 280px;
+	margin-top: 10px;
+	background: #fff;
+	display: none;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown.open .dropdown-menu {
+	display: block;
+}
+
 /*
 ================================================================================
 |                                     HEADER                                   |
@@ -586,20 +605,6 @@ header .header__btns {
 .logo img {
 	max-width: 185px;
 	max-height: 10vh;
-}
-
-.lang a {
-	margin-left: 10px;
-	font-size: 14px;
-	line-height: 22px;
-	font-family: 'HelveticaNeueCyrRoman';
-	text-decoration: none;
-}
-
-.lang a.active,
-.lang a:hover {
-	color: #2d6b7f;
-	text-decoration: none;
 }
 
 .menu {
@@ -803,6 +808,43 @@ header .header__btns {
 	background: transparent url(../image/icon-down.png) no-repeat center;
 }
 
+.account__btn {
+	padding: 0 12px;
+	padding-left: 40px;
+	line-height: 32px;
+	font-size: 13px;
+	color: #767676;
+	border: 1px solid #d1d1d1;
+	border-radius: 2px;
+	background: url(../image/enter.svg) no-repeat 12px center;
+	background-size: 16px;
+	cursor: pointer;
+}
+
+.settings {
+	position: relative;
+}
+
+.settings__btn {
+	width: 32px;
+	height: 32px;
+	margin-left: 15px;
+	background: url(../image/settings.svg) no-repeat center;
+	background-size: 21px;
+}
+
+.settings__title {
+	margin-bottom: 8px;
+	font-size: 11px;
+	line-height: 13px;
+	color: #bebebe;
+	text-transform: uppercase;
+}
+
+.settings .setting {
+	padding: 10px 0;
+}
+
 /*
 ================================================================================
 |                                     CONTENT                                 |
@@ -978,11 +1020,32 @@ header .header__btns {
 
 .run-box .run-line {
 	position: relative;
+}
+
+.run-box .run-line__toggle {
 	padding: 10px 0;
 	padding-left: 30px;
 	font-size: 16px;
 	color: #000;
 	cursor: pointer;
+}
+
+.run-box .run-line.dropdown.open {
+	z-index: 1;
+}
+
+.run-box .run-line.dropdown .dropdown-toggle {
+	position: relative;
+	z-index: 1;
+}
+
+.run-box .run-line.dropdown .dropdown-menu {
+	top: -16px;
+	left: -16px;
+	right: -16px;
+	width: auto;
+	margin-top: 0;
+	padding-top: 75px;
 }
 
 .run-box .icon {

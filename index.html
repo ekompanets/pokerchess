@@ -13,10 +13,15 @@
 	<!-- <link rel="stylesheet" type="text/css" href="js/onepage-scroll.css" /> -->
 	<!-- <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/> -->
   <!-- <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/> -->
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+  <link rel="stylesheet" href="css/ion.rangeSlider.min.css"/>
+  <link rel="stylesheet" href="css/jquery-ui.css"/>
 
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 	
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>	
+	<script src="js/ion.rangeSlider.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+
   <!-- <script src="js/bootstrap/js/bootstrap.js"></script> -->
   <script src="js/jquery.maskedinput.js"></script>
   <!-- <script src="js/slick/slick.min.js"></script> -->
@@ -63,16 +68,81 @@
     </div>
 
     <div class="header__btns">
-    	<div class="account">
-	    	<div class="account__btn">Войти</div>
+    	<div class="dropdown account">
+	    	<div class="dropdown-toggle account__btn" data-toggle="dropdown">Войти</div>
+	    	<div class="dropdown-menu">
+	    		<div class="setting">
+		    		<div class="settings__title">Язык</div>
+		    		<div class="lang block-flex">
+				    	<a href="#" class="active" disabled>UA</a>
+				    	<a href="#" class="">RU</a>
+				    	<a href="#" class="">EN</a>
+				    	<a href="#" class="">DE</a>
+				    	<a href="#" class="">CH</a>
+				    	<a href="#" class="">IN</a>
+				    	<a href="#" class="">AR</a>
+				    	<a href="#" class="">FR</a>
+				    </div>
+			    </div>
+
+		    	<div class="setting">
+				    <div class="settings__title">Звук</div>
+				    <div class="voice">
+				    	<input type="text" class="js-range-slider" name="my_range" value="" />
+				    </div>
+			    </div>
+	    	</div>
 	    </div>
 
-	    <div class="settings">
-	    	<div class="settings__btn"></div>	
-	    	<div class="settings__dropdown">
-	    		<div class="lang block-flex hidden-xs">
-			    	<a href="#" class="active" disabled>рус</a>
-			    	<a href="#" class="">eng</a>
+	    <div class="dropdown settings">
+	    	<div class="dropdown-toggle settings__btn" data-toggle="dropdown"></div>	
+	    	<div class="dropdown-menu settings__dropdown" >
+	    		<div class="setting">
+		    		<div class="settings__title">Язык</div>
+		    		<div class="lang block-flex">
+				    	<a href="#" class="active" disabled>UA</a>
+				    	<a href="#" class="">RU</a>
+				    	<a href="#" class="">EN</a>
+				    	<a href="#" class="">DE</a>
+				    	<a href="#" class="">CH</a>
+				    	<a href="#" class="">IN</a>
+				    	<a href="#" class="">AR</a>
+				    	<a href="#" class="">FR</a>
+				    </div>
+			    </div>
+
+		    	<div class="setting">
+				    <div class="settings__title">Звук</div>
+				    <div class="voice">
+				    	<input type="text" class="js-range-slider" name="my_range" value="" />
+				    </div>
+			    </div>
+
+			    <div class="setting">
+				    <div class="settings__title">Тема</div>
+				    <div class="voice">
+				    	<input type="radio" name="theme" value="gray" id="theme-gr">
+				    	<label for="theme-gr"></label>
+				    	<input type="radio" name="theme" value="black" id="theme-bl">
+				    	<label for="theme-bl"></label>
+				    </div>
+			    </div>
+
+			    <div class="block-flex">
+			    	<div class="setting">
+			    		<div class="settings__title">Доска</div>
+			    		<select>
+			    			<option>1</option>
+			    			<option>2</option>
+			    		</select>
+			    	</div>
+			    	<div class="setting">
+			    		<div class="settings__title">Фигуры</div>
+			    		<select>
+			    			<option>1</option>
+			    			<option>2</option>
+			    		</select>
+			    	</div>
 			    </div>
 	    	</div>
 	    </div>
@@ -177,17 +247,61 @@
 
 		<div class="column column-right">
 			<div class="info-box run-box">
-				<div class="run-line">
-					<i class="icon"><img src="image/plus-button.svg"></i><span class="name">Создать игру</span>
+				<div class="dropdown run-line">
+					<div class="dropdown-toggle run-line__toggle"><i class="icon"><img src="image/plus-button.svg"></i><span class="name">Создать игру</span></div>
+					<div class="dropdown-menu">
+						<div class="setting">
+					    <div class="settings__title">Контроль времени</div>
+					    <div class="set-time">
+					    	<div id="slider-range-minute"></div>
+					    	<p>
+								  <label>минут на партию</label>
+								  <input type="text" id="range-minute" readonly>
+								</p>
+					    	<div id="slider-range-second"></div>
+					    	<p>
+								  <label>добавление секунд на ход</label>
+								  <input type="text" id="range-second" readonly>
+								</p>
+					    </div>
+				    </div>
+
+				    <div class="setting">
+					    <div class="settings__title">Рейтинг</div>
+					    <div class="set-rating">
+					    	<div id="slider-range-rating"></div>
+					    	<div class="block-flex">
+					    		<input type="text" readonly id="ratemin">
+					    		<input type="text" readonly id="ratemax">
+				    		</div>
+
+					    </div>
+				    </div>
+
+				    <div class="setting">
+					    <div class="settings__title">Призовой взнос</div>
+					    <div class="prize-fee">
+					    	<span>$</span><input id="spinner" name="value" value="25">
+					    </div>
+				    </div>
+
+				    <div class="setting chess-choice">
+				    	<div class="chess"></div>
+				    	<div class="chess"></div>
+				    	<div class="chess"></div>
+				    </div>
+
+				    <div class="btn">Создать игру</div>
+					</div>
 				</div>
 				<div class="run-line">
-					<i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span>
+					<div class="run-line__toggle"><i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span></div>
 				</div>
 				<div class="run-line">
-					<i class="icon"><img src="image/support.svg"></i><span class="name">Сыграть с другом</span>
+					<div class="run-line__toggle"><i class="icon"><img src="image/support.svg"></i><span class="name">Сыграть с другом</span></div>
 				</div>
 				<div class="run-line">
-					<i class="icon"><img src="image/robot.svg"></i><span class="name">Сыграть с ботом</span>
+					<div class="run-line__toggle"><i class="icon"><img src="image/robot.svg"></i><span class="name">Сыграть с ботом</span></div>
 				</div>
 			</div>
 
