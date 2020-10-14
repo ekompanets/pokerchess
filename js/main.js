@@ -47,16 +47,31 @@
       range: true,
       value: 5,
       min: 100,
-      max: 430,
+      max: 4300,
       values: [ 100, 2000 ],
       slide: function( event, ui ) {
         $( "#ratemin" ).val( ui.values[ 0 ] );
         $( "#ratemax" ).val( ui.values[ 1 ] );
       }
-    });
+    });    
 
     $( "#ratemin" ).val($( "#slider-range-rating" ).slider( "values", 0 ));
     $( "#ratemax" ).val($( "#slider-range-rating" ).slider( "values", 1 ));
+
+    $( "#slider-tour-rating" ).slider({
+      range: true,
+      value: 5,
+      min: 100,
+      max: 3500,
+      values: [ 100, 2000 ],
+      slide: function( event, ui ) {
+        $( "#ratetourmin" ).val( ui.values[ 0 ] );
+        $( "#ratetourmax" ).val( ui.values[ 1 ] );
+      }
+    });
+
+    $( "#ratetourmin" ).val($( "#slider-tour-rating" ).slider( "values", 0 ));
+    $( "#ratetourmax" ).val($( "#slider-tour-rating" ).slider( "values", 1 ));
 
     $(".js-range-slider").ionRangeSlider({
         min: 0,
@@ -64,6 +79,8 @@
         from: 3,
         grid: false
     });
+
+    $("#datepicker").datepicker();
 
     $('.dropdown-toggle').on('click', function(e) {
       //  if (!$(e.target).closest(".dropdown").length) {
@@ -76,8 +93,37 @@
       if (!$(e.target).closest(".dropdown").length) {
         $('.dropdown').removeClass('open');
       }
+
+      if ((!$(e.target).closest(".modal").length) && (!$(e.target).closest("[data-toggle=modal]").length)) {
+        $('.modal').hide();
+      }
       e.stopPropagation();
     });
+
+    $('.modal-toggle').on('click', function(e) {
+      var modalId = $(this).attr('data-target');
+      console.log(modalId)
+      $(modalId).show();
+    })
+
+    $('.modal .close').on('click', function(e) {
+      $(this).closest('.modal').hide();
+    })
+
+    $('select').on('click', function(e){
+
+      if ($(this).closest('.select-wrap').hasClass('change')) {
+        $(this).closest('.select-wrap').removeClass('change');
+      }
+      else {
+        $(this).closest('.select-wrap').addClass('change');
+      }
+
+    })
+
+    $('select').on('blur', function(e){
+      $(this).closest('.select-wrap').removeClass('change');
+    })
 
 
     $(".scroll-link").on("click", "a", function (event) {

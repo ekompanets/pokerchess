@@ -72,7 +72,7 @@
 	    	<div class="dropdown-toggle account__btn" data-toggle="dropdown">Войти</div>
 	    	<div class="dropdown-menu">
 	    		<div class="setting">
-		    		<div class="settings__title">Язык</div>
+		    		<label class="settings__title">Язык</label>
 		    		<div class="lang block-flex">
 				    	<a href="#" class="active" disabled>UA</a>
 				    	<a href="#" class="">RU</a>
@@ -86,7 +86,7 @@
 			    </div>
 
 		    	<div class="setting">
-				    <div class="settings__title">Звук</div>
+				    <label class="settings__title">Звук</label>
 				    <div class="voice">
 				    	<input type="text" class="js-range-slider" name="my_range" value="" />
 				    </div>
@@ -98,7 +98,7 @@
 	    	<div class="dropdown-toggle settings__btn" data-toggle="dropdown"></div>	
 	    	<div class="dropdown-menu settings__dropdown" >
 	    		<div class="setting">
-		    		<div class="settings__title">Язык</div>
+		    		<label class="settings__title">Язык</label>
 		    		<div class="lang block-flex">
 				    	<a href="#" class="active" disabled>UA</a>
 				    	<a href="#" class="">RU</a>
@@ -112,15 +112,15 @@
 			    </div>
 
 		    	<div class="setting">
-				    <div class="settings__title">Звук</div>
+				    <label class="settings__title">Звук</label>
 				    <div class="voice">
 				    	<input type="text" class="js-range-slider" name="my_range" value="" />
 				    </div>
 			    </div>
 
 			    <div class="setting">
-				    <div class="settings__title">Тема</div>
-				    <div class="voice">
+				    <label class="settings__title">Тема</label>
+				    <div class="radio-toggle theme">
 				    	<input type="radio" name="theme" value="gray" id="theme-gr">
 				    	<label for="theme-gr"></label>
 				    	<input type="radio" name="theme" value="black" id="theme-bl">
@@ -130,14 +130,14 @@
 
 			    <div class="block-flex">
 			    	<div class="setting">
-			    		<div class="settings__title">Доска</div>
+			    		<label class="settings__title">Доска</label>
 			    		<select>
 			    			<option>1</option>
 			    			<option>2</option>
 			    		</select>
 			    	</div>
 			    	<div class="setting">
-			    		<div class="settings__title">Фигуры</div>
+			    		<label class="settings__title">Фигуры</label>
 			    		<select>
 			    			<option>1</option>
 			    			<option>2</option>
@@ -251,7 +251,7 @@
 					<div class="dropdown-toggle run-line__toggle"><i class="icon"><img src="image/plus-button.svg"></i><span class="name">Создать игру</span></div>
 					<div class="dropdown-menu">
 						<div class="setting">
-					    <div class="settings__title">Контроль времени</div>
+					    <label class="settings__title">Контроль времени</label>
 					    <div class="set-time">
 					    	<div id="slider-range-minute"></div>
 					    	<p>
@@ -267,7 +267,7 @@
 				    </div>
 
 				    <div class="setting">
-					    <div class="settings__title">Рейтинг</div>
+					    <label class="settings__title">Рейтинг</label>
 					    <div class="set-rating">
 					    	<div id="slider-range-rating"></div>
 					    	<div class="block-flex">
@@ -279,7 +279,7 @@
 				    </div>
 
 				    <div class="setting">
-					    <div class="settings__title">Призовой взнос</div>
+					    <label class="settings__title">Призовой взнос</label>
 					    <div class="prize-fee">
 					    	<span>$</span><input id="spinner" name="value" value="25">
 					    </div>
@@ -295,7 +295,7 @@
 					</div>
 				</div>
 				<div class="run-line">
-					<div class="run-line__toggle"><i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span></div>
+					<div class="modal-toggle run-line__toggle" data-toggle="modal" data-target="#exampleModal"><i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span></div>
 				</div>
 				<div class="run-line">
 					<div class="run-line__toggle"><i class="icon"><img src="image/support.svg"></i><span class="name">Сыграть с другом</span></div>
@@ -374,6 +374,147 @@
 		</div>
 
 	</footer>	
+
+	<!-- Modal -->
+<div class="modal fade modal-turnament" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="exampleModalLongTitle"><i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span></div>
+        <div class="close">
+          <span class="icon-close">
+          	<span></span>
+          	<span></span>
+          </span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="block-flex">
+        	<div class="modal-column">
+        		<input type="text" placeholder="Название">
+
+        		<div class="radio-toggle type">
+				    	<input type="radio" name="tour-type" value="gray" id="open">
+				    	<label for="open">Открытый</label>
+				    	<input type="radio" name="tour-type" value="black" id="close">
+				    	<label for="close">Закрытый</label>
+				    </div>
+
+				    <input type="text" placeholder="Код доступа">
+
+				    <div class="setting">
+					    <label class="settings__title">Начальное время на часах</label>
+					    <div class="select-wrap">
+						    <select name="start-time" id="">
+						    	<option value="2">2 минуты</option>
+						    	<option value="2">4 минуты</option>
+						    	<option value="2">6 минуты</option>
+						    </select>
+						  </div>
+				    </div>
+
+				    <div class="setting">
+					    <label class="settings__title">Добавление времени</label>
+					    <div class="select-wrap">
+						    <select name="start-time" id="">
+						    	<option value="10">10 секунд</option>
+						    	<option value="20">20 секунд</option>
+						    	<option value="30">30 секунд</option>
+						    </select>
+						  </div>
+				    </div>
+
+				    <div class="setting">
+					    <label class="settings__title">Длительность</label>
+					    <div class="select-wrap">
+						    <select name="start-time" id="">
+						    	<option value="45">45 минут</option>
+						    	<option value="50">50 минут</option>
+						    	<option value="60">60 минут</option>
+						    </select>
+						  </div>
+				    </div>
+        	</div>
+
+        	<div class="modal-column">
+        		<div class="setting">
+					    <label class="settings__title">Вариант системы</label>
+					    <div class="select-wrap">
+						    <select name="start-time" id="" placeholder="Вариант системы">
+						    	<option value="v1">Вариант системы</option>
+						    	<option value="v2">Вариант системы</option>
+						    	<option value="v3">Вариант системы</option>
+						    </select>
+						  </div>
+				    </div>
+
+			    	<div class="radio-toggle type">
+				    	<input type="radio" name="tour-start" value="time" id="tour-start">
+				    	<label for="open">Время до начала</label>
+				    	<input type="radio" name="tour-time" value="date" id="tour-date">
+				    	<label for="close">Дата</label>
+				    </div>
+
+				    <div class="block-flex">
+				    	<input type="text" id="datepicker">
+				    </div>
+
+				    <div class="block-flex">
+				    	<div class="setting">
+						    <label class="settings__title">Количество игроков</label>
+						    <div class="playersnum">
+						    	<span>$</span><input id="spin-playersnum" name="value" value="20">
+						    </div>
+					    </div>
+				    </div>
+
+				    <div class="setting">
+					    <label class="settings__title">Рейтинг</label>
+					    <div class="set-rating">
+					    	<div id="slider-tour-rating"></div>
+					    	<div class="block-flex">
+					    		<input type="text" readonly id="ratemin">
+					    		<input type="text" readonly id="ratemax">
+				    		</div>
+					    </div>
+				    </div>
+
+				    <div class="setting">
+				    	<input type="checkbox" id="prizeFeeCheck">
+					    <label for="prizeFeeCheck" class="settings__title">Призовой взнос</label>
+				    </div>
+
+			    	<div class="setting">
+					    <label class="settings__title">Количество игроков</label>
+					    <div class="playersnum">
+					    	<span>$</span><input id="spin-playersnum" name="value" value="20">
+					    </div>
+				    </div>
+
+
+        	</div>
+        </div>
+        <div class="block-flex tour-checks">
+      		<div class="setting">
+			    	<input type="checkbox" id="prizeFeeCheck">
+				    <label for="prizeFeeCheck" class="settings__title">Allow Bersek</label>
+			    </div>
+			    <div class="setting">
+			    	<input type="checkbox" id="prizeFeeCheck">
+				    <label for="prizeFeeCheck" class="settings__title">Arena steaks</label>
+			    </div>
+			    <div class="setting">
+			    	<input type="checkbox" id="prizeFeeCheck">
+				    <label for="prizeFeeCheck" class="settings__title">Чат</label>
+			    </div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn">Создать турнир</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- BODY EOF   -->
 <script>
