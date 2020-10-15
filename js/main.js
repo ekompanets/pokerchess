@@ -12,7 +12,7 @@
   $(document).ready(function () {
     getOrientation(); 
 
-    var spinner = $( "#spinner" ).spinner({
+    var spinner = $( "#spinner-prize" ).spinner({
       min: 25,
       max: 2500,
       step: 25,
@@ -21,16 +21,41 @@
       numberFormat: "C"
     });
 
+    var spinner = $( "#spinner-playersnum" ).spinner({
+      min: 2,
+      max: 100,
+      step: 1,
+      start: 20,
+      // culture: 'en-US',
+      // numberFormat: "C"
+    });
+
+    var spinner = $( "#spin-tourPrizeFee" ).spinner({
+      min: 25,
+      max: 2500,
+      step: 25,
+      start: 25,
+      culture: 'en-US',
+      numberFormat: "C"
+    });
+
+    $( "#slider-range-voice" ).slider({
+      range: "min",
+      value: 3,
+      min: 1,
+      max: 10
+    });
+
     $( "#slider-range-minute" ).slider({
       range: "min",
       value: 3,
       min: 1,
       max: 5,
       slide: function( event, ui ) {
-        $( "#range-minute" ).val( ui.value);
+        $( "#range-minute" ).text( ui.value);
       }
     });
-    $( "#range-minute" ).val( $( "#slider-range-minute" ).slider( "value"));
+    $( "#range-minute" ).text( $( "#slider-range-minute" ).slider( "value"));
 
     $( "#slider-range-second" ).slider({
       range: "min",
@@ -38,10 +63,10 @@
       min: 1,
       max: 10,
       slide: function( event, ui ) {
-        $( "#range-second" ).val( ui.value);
+        $( "#range-second" ).text( ui.value);
       }
     });
-    $( "#range-second" ).val( $( "#slider-range-second" ).slider( "value"));
+    $( "#range-second" ).text( $( "#slider-range-second" ).slider( "value"));
 
     $( "#slider-range-rating" ).slider({
       range: true,
@@ -50,13 +75,18 @@
       max: 4300,
       values: [ 100, 2000 ],
       slide: function( event, ui ) {
-        $( "#ratemin" ).val( ui.values[ 0 ] );
-        $( "#ratemax" ).val( ui.values[ 1 ] );
+        // $( "#ratemin" ).val( ui.values[ 0 ] );
+        // $( "#ratemax" ).val( ui.values[ 1 ] );
+
+        $( "#ratemin" ).text( ui.values[ 0 ] );
+        $( "#ratemax" ).text( ui.values[ 1 ] );
       }
     });    
 
-    $( "#ratemin" ).val($( "#slider-range-rating" ).slider( "values", 0 ));
-    $( "#ratemax" ).val($( "#slider-range-rating" ).slider( "values", 1 ));
+    // $( "#ratemin" ).val($( "#slider-range-rating" ).slider( "values", 0 ));
+    // $( "#ratemax" ).val($( "#slider-range-rating" ).slider( "values", 1 ));
+     $( "#ratemin" ).text($( "#slider-range-rating" ).slider( "values", 0 ));
+    $( "#ratemax" ).text($( "#slider-range-rating" ).slider( "values", 1 ));
 
     $( "#slider-tour-rating" ).slider({
       range: true,
@@ -65,13 +95,13 @@
       max: 3500,
       values: [ 100, 2000 ],
       slide: function( event, ui ) {
-        $( "#ratetourmin" ).val( ui.values[ 0 ] );
-        $( "#ratetourmax" ).val( ui.values[ 1 ] );
+        $( "#ratetourmin" ).text( ui.values[ 0 ] );
+        $( "#ratetourmax" ).text( ui.values[ 1 ] );
       }
     });
 
-    $( "#ratetourmin" ).val($( "#slider-tour-rating" ).slider( "values", 0 ));
-    $( "#ratetourmax" ).val($( "#slider-tour-rating" ).slider( "values", 1 ));
+    $( "#ratetourmin" ).text($( "#slider-tour-rating" ).slider( "values", 0 ));
+    $( "#ratetourmax" ).text($( "#slider-tour-rating" ).slider( "values", 1 ));
 
     $(".js-range-slider").ionRangeSlider({
         min: 0,
@@ -80,7 +110,17 @@
         grid: false
     });
 
-    $("#datepicker").datepicker();
+    $("#datepicker").datepicker({
+      dateFormat: "dd.mm"
+    });
+
+    var d = new Date();
+    // var day = d.getDate();
+    // var month = d.getMonth() + 1;
+    $("#datepicker").val(  d.getDate() + "." + (d.getMonth() + 1));
+
+
+
 
     $('.dropdown-toggle').on('click', function(e) {
       //  if (!$(e.target).closest(".dropdown").length) {

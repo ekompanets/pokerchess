@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/jquery-ui.css"/>
 
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
-	
+	<script src="js/globalize.min.js"></script>
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>	
 	<script src="js/ion.rangeSlider.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
@@ -71,26 +71,20 @@
     	<div class="dropdown account">
 	    	<div class="dropdown-toggle account__btn" data-toggle="dropdown">Войти</div>
 	    	<div class="dropdown-menu">
-	    		<div class="setting">
-		    		<label class="settings__title">Язык</label>
-		    		<div class="lang block-flex">
-				    	<a href="#" class="active" disabled>UA</a>
-				    	<a href="#" class="">RU</a>
-				    	<a href="#" class="">EN</a>
-				    	<a href="#" class="">DE</a>
-				    	<a href="#" class="">CH</a>
-				    	<a href="#" class="">IN</a>
-				    	<a href="#" class="">AR</a>
-				    	<a href="#" class="">FR</a>
-				    </div>
-			    </div>
+	    		<form action="">
+        			<input type="text" placeholder="Логин">
+        			<input type="text" placeholder="Пароль">
+        			<div class="block-flex">
+        				<div class="btn login-btn">Войти</div>
+        				<a href="#" class="login-forgot">Забыли пароль?</a>
+        			</div>
 
-		    	<div class="setting">
-				    <label class="settings__title">Звук</label>
-				    <div class="voice">
-				    	<input type="text" class="js-range-slider" name="my_range" value="" />
-				    </div>
-			    </div>
+        			<div  class="reg-link"><a href="#">Регистрация</a></div>
+        			<div class="socials">
+								<a href="#" target="_blank"><i class="fa fa-google"></i></a>
+								<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+							</div>
+	    		</form>
 	    	</div>
 	    </div>
 
@@ -98,7 +92,7 @@
 	    	<div class="dropdown-toggle settings__btn" data-toggle="dropdown"></div>	
 	    	<div class="dropdown-menu settings__dropdown" >
 	    		<div class="setting">
-		    		<label class="settings__title">Язык</label>
+		    		<label class="setting__title">Язык</label>
 		    		<div class="lang block-flex">
 				    	<a href="#" class="active" disabled>UA</a>
 				    	<a href="#" class="">RU</a>
@@ -112,16 +106,14 @@
 			    </div>
 
 		    	<div class="setting">
-				    <label class="settings__title">Звук</label>
-				    <div class="voice">
-				    	<input type="text" class="js-range-slider" name="my_range" value="" />
-				    </div>
+				    <label class="setting__title">Звук</label>
+				    <div id="slider-range-voice"></div>
 			    </div>
 
 			    <div class="setting">
-				    <label class="settings__title">Тема</label>
+				    <label class="setting__title">Тема</label>
 				    <div class="radio-toggle theme">
-				    	<input type="radio" name="theme" value="gray" id="theme-gr">
+				    	<input type="radio" name="theme" value="gray" id="theme-gr" checked>
 				    	<label for="theme-gr"></label>
 				    	<input type="radio" name="theme" value="black" id="theme-bl">
 				    	<label for="theme-bl"></label>
@@ -130,18 +122,22 @@
 
 			    <div class="block-flex">
 			    	<div class="setting">
-			    		<label class="settings__title">Доска</label>
-			    		<select>
-			    			<option>1</option>
-			    			<option>2</option>
-			    		</select>
+			    		<label class="setting__title">Доска</label>
+			    		<div class="select-wrap">
+			    			<select>
+				    			<option>1</option>
+				    			<option>2</option>
+				    		</select>
+				    	</div>
 			    	</div>
 			    	<div class="setting">
-			    		<label class="settings__title">Фигуры</label>
-			    		<select>
-			    			<option>1</option>
-			    			<option>2</option>
-			    		</select>
+			    		<label class="setting__title">Фигуры</label>
+			    		<div class="select-wrap">
+				    		<select>
+				    			<option>1</option>
+				    			<option>2</option>
+				    		</select>
+				    	</div>
 			    	</div>
 			    </div>
 	    	</div>
@@ -251,37 +247,40 @@
 					<div class="dropdown-toggle run-line__toggle"><i class="icon"><img src="image/plus-button.svg"></i><span class="name">Создать игру</span></div>
 					<div class="dropdown-menu">
 						<div class="setting">
-					    <label class="settings__title">Контроль времени</label>
+					    <label class="setting__title">Контроль времени</label>
 					    <div class="set-time">
 					    	<div id="slider-range-minute"></div>
-					    	<p>
-								  <label>минут на партию</label>
-								  <input type="text" id="range-minute" readonly>
-								</p>
+					    	<div class="block-flex set-time__labels">
+								  <span>минут на партию</span>
+								  <span id="range-minute" ></span>
+								</div>
 					    	<div id="slider-range-second"></div>
-					    	<p>
-								  <label>добавление секунд на ход</label>
-								  <input type="text" id="range-second" readonly>
-								</p>
+					    	<div class="block-flex set-time__labels">
+								  <span>добавление секунд на ход</span>
+								  <span id="range-second" ></span>
+								</div>
 					    </div>
 				    </div>
 
 				    <div class="setting">
-					    <label class="settings__title">Рейтинг</label>
+					    <label class="setting__title">Рейтинг</label>
 					    <div class="set-rating">
 					    	<div id="slider-range-rating"></div>
 					    	<div class="block-flex">
-					    		<input type="text" readonly id="ratemin">
-					    		<input type="text" readonly id="ratemax">
+					    		<!-- <input type="text" readonly id="ratemin">
+					    		<input type="text" readonly id="ratemax"> -->
+
+					    		<span id="ratemin"></span>
+					    		<span id="ratemax"></span>
 				    		</div>
 
 					    </div>
 				    </div>
 
 				    <div class="setting">
-					    <label class="settings__title">Призовой взнос</label>
-					    <div class="prize-fee">
-					    	<span>$</span><input id="spinner" name="value" value="25">
+					    <label class="setting__title">Призовой взнос</label>
+					    <div class="spinner-wrap prize-fee">
+					    	<!-- <span>$</span> --><input id="spinner-prize" class="spinner" name="value" value="25">
 					    </div>
 				    </div>
 
@@ -295,7 +294,7 @@
 					</div>
 				</div>
 				<div class="run-line">
-					<div class="modal-toggle run-line__toggle" data-toggle="modal" data-target="#exampleModal"><i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span></div>
+					<div class="modal-toggle run-line__toggle" data-toggle="modal" data-target="#tourModal"><i class="icon"><img src="image/trophy-star.svg"></i><span class="name">Создать турнир</span></div>
 				</div>
 				<div class="run-line">
 					<div class="run-line__toggle"><i class="icon"><img src="image/support.svg"></i><span class="name">Сыграть с другом</span></div>
@@ -376,7 +375,7 @@
 	</footer>	
 
 	<!-- Modal -->
-<div class="modal fade modal-turnament" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade modal-tour" id="tourModal" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -389,125 +388,134 @@
         </div>
       </div>
       <div class="modal-body">
-        <div class="block-flex">
-        	<div class="modal-column">
-        		<input type="text" placeholder="Название">
+      	<form action="">
+	        <div class="block-flex modal-columns">
+	        	<div class="modal-column">
+	        		<div class="setting">
+	        			<input type="text" placeholder="Название">
+	        		</div>
 
-        		<div class="radio-toggle type">
-				    	<input type="radio" name="tour-type" value="gray" id="open">
-				    	<label for="open">Открытый</label>
-				    	<input type="radio" name="tour-type" value="black" id="close">
-				    	<label for="close">Закрытый</label>
-				    </div>
+	        		<div class="setting radio-toggle type">
+					    	<input type="radio" name="tour-type" value="gray" id="open">
+					    	<label for="open">Открытый</label>
+					    	<input type="radio" name="tour-type" value="black" id="close" checked>
+					    	<label for="close">Закрытый</label>
+					    </div>
 
-				    <input type="text" placeholder="Код доступа">
-
-				    <div class="setting">
-					    <label class="settings__title">Начальное время на часах</label>
-					    <div class="select-wrap">
-						    <select name="start-time" id="">
-						    	<option value="2">2 минуты</option>
-						    	<option value="2">4 минуты</option>
-						    	<option value="2">6 минуты</option>
-						    </select>
+	        		<div class="setting">
+						    <input type="text" placeholder="Код доступа">
 						  </div>
-				    </div>
 
-				    <div class="setting">
-					    <label class="settings__title">Добавление времени</label>
-					    <div class="select-wrap">
-						    <select name="start-time" id="">
-						    	<option value="10">10 секунд</option>
-						    	<option value="20">20 секунд</option>
-						    	<option value="30">30 секунд</option>
-						    </select>
-						  </div>
-				    </div>
+					    <div class="setting">
+						    <label class="setting__title">Начальное время на часах</label>
+						    <div class="select-wrap">
+							    <select name="start-time" id="">
+							    	<option value="2">2 минуты</option>
+							    	<option value="2">4 минуты</option>
+							    	<option value="2">6 минуты</option>
+							    </select>
+							  </div>
+					    </div>
 
-				    <div class="setting">
-					    <label class="settings__title">Длительность</label>
-					    <div class="select-wrap">
-						    <select name="start-time" id="">
-						    	<option value="45">45 минут</option>
-						    	<option value="50">50 минут</option>
-						    	<option value="60">60 минут</option>
-						    </select>
-						  </div>
-				    </div>
-        	</div>
+					    <div class="setting">
+						    <label class="setting__title">Добавление времени</label>
+						    <div class="select-wrap">
+							    <select name="start-time" id="">
+							    	<option value="10">10 секунд</option>
+							    	<option value="20">20 секунд</option>
+							    	<option value="30">30 секунд</option>
+							    </select>
+							  </div>
+					    </div>
 
-        	<div class="modal-column">
-        		<div class="setting">
-					    <label class="settings__title">Вариант системы</label>
-					    <div class="select-wrap">
-						    <select name="start-time" id="" placeholder="Вариант системы">
-						    	<option value="v1">Вариант системы</option>
-						    	<option value="v2">Вариант системы</option>
-						    	<option value="v3">Вариант системы</option>
-						    </select>
-						  </div>
-				    </div>
+					    <div class="setting">
+						    <label class="setting__title">Длительность</label>
+						    <div class="select-wrap">
+							    <select name="start-time" id="">
+							    	<option value="45">45 минут</option>
+							    	<option value="50">50 минут</option>
+							    	<option value="60">60 минут</option>
+							    </select>
+							  </div>
+					    </div>
+	        	</div>
 
-			    	<div class="radio-toggle type">
-				    	<input type="radio" name="tour-start" value="time" id="tour-start">
-				    	<label for="open">Время до начала</label>
-				    	<input type="radio" name="tour-time" value="date" id="tour-date">
-				    	<label for="close">Дата</label>
-				    </div>
+	        	<div class="modal-column">
+	        		<div class="setting">
+						    <!-- <label class="setting__title">Вариант системы</label> -->
+						    <div class="select-wrap">
+							    <select name="start-time" id="" placeholder="Вариант системы">
+							    	<option value="v1">Вариант системы</option>
+							    	<option value="v2">Вариант системы</option>
+							    	<option value="v3">Вариант системы</option>
+							    </select>
+							  </div>
+					    </div>
 
-				    <div class="block-flex">
-				    	<input type="text" id="datepicker">
-				    </div>
+				    	<div class="setting radio-toggle type">
+					    	<input type="radio" name="tour-start" value="time" id="tour-start">
+					    	<label for="tour-start">Время до начала</label>
+					    	<input type="radio" name="tour-start" value="date" id="tour-date" checked>
+					    	<label for="tour-date">Дата</label>
+					    </div>
 
-				    <div class="block-flex">
+					    <div class="setting block-flex">
+					    	<input type="text" id="datepicker">
+					    </div>
+
 				    	<div class="setting">
-						    <label class="settings__title">Количество игроков</label>
-						    <div class="playersnum">
-						    	<span>$</span><input id="spin-playersnum" name="value" value="20">
+						    <label class="setting__title">Количество игроков</label>
+						    <div class="spinner-wrap playersnum">
+						    	<input id="spinner-playersnum" class="spinner" name="value" value="20">
 						    </div>
 					    </div>
-				    </div>
 
-				    <div class="setting">
-					    <label class="settings__title">Рейтинг</label>
-					    <div class="set-rating">
-					    	<div id="slider-tour-rating"></div>
-					    	<div class="block-flex">
-					    		<input type="text" readonly id="ratemin">
-					    		<input type="text" readonly id="ratemax">
-				    		</div>
+					    <div class="setting">
+						    <label class="setting__title">Рейтинг</label>
+						    <div class="set-rating">
+						    	<div id="slider-tour-rating"></div>
+						    	<div class="block-flex">
+						    		<span id="ratetourmin"></span>
+						    		<span id="ratetourmax"></span>
+					    		</div>
+						    </div>
+					    </div>
+
+				    	<div class="setting">
+				    		<div class="checkbox-toggle setting__title">
+						    	<input type="checkbox" id="prizeFeeCheck">
+							    <label for="prizeFeeCheck" class="">Призовой взнос</label>
+						    </div>
+						    
+						    <div class="spinner-wrap tour-prize-fee">
+						    	<input id="spin-tourPrizeFee" name="value" value="50">
+						    </div>
+					    </div>
+
+
+	        	</div>
+	        </div>
+	        <div class="block-flex tour-checks">
+	      		<div class="setting">
+	      			<div class="checkbox-toggle">
+					    	<input type="checkbox" id="tour-check1">
+						    <label for="tour-check1" class="">Allow Bersek</label>
 					    </div>
 				    </div>
-
 				    <div class="setting">
-				    	<input type="checkbox" id="prizeFeeCheck">
-					    <label for="prizeFeeCheck" class="settings__title">Призовой взнос</label>
-				    </div>
-
-			    	<div class="setting">
-					    <label class="settings__title">Количество игроков</label>
-					    <div class="playersnum">
-					    	<span>$</span><input id="spin-playersnum" name="value" value="20">
+				    	<div class="checkbox-toggle">
+					    	<input type="checkbox" id="tour-check2">
+						    <label for="tour-check2" class="">Arena steaks</label>
 					    </div>
 				    </div>
-
-
-        	</div>
-        </div>
-        <div class="block-flex tour-checks">
-      		<div class="setting">
-			    	<input type="checkbox" id="prizeFeeCheck">
-				    <label for="prizeFeeCheck" class="settings__title">Allow Bersek</label>
-			    </div>
-			    <div class="setting">
-			    	<input type="checkbox" id="prizeFeeCheck">
-				    <label for="prizeFeeCheck" class="settings__title">Arena steaks</label>
-			    </div>
-			    <div class="setting">
-			    	<input type="checkbox" id="prizeFeeCheck">
-				    <label for="prizeFeeCheck" class="settings__title">Чат</label>
-			    </div>
-      	</div>
+				    <div class="setting">
+				    	<div class="checkbox-toggle">
+					    	<input type="checkbox" id="tour-check3">
+						    <label for="tour-check3" class="">Чат</label>
+					    </div>
+				    </div>
+	      	</div>
+      	</form>
       </div>
       <div class="modal-footer">
         <div class="btn">Создать турнир</div>
