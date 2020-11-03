@@ -354,6 +354,10 @@ body {
 	color: #333;
 }
 
+a {
+	transition: none;
+}
+
 .container {
 	width: 100%;
 	margin: 0 auto;
@@ -388,7 +392,6 @@ body {
 .btn:hover {
 	background: #b1b1b1;
 	color: #fff;
-	transition: all .3s;
 }
 
 .btn-link {
@@ -466,7 +469,7 @@ input[type=text] {
 	line-height: 18px;
 	font-size: 10px;
 	border: none;
-	border-bottom: 3px solid #f6f6f6;
+	border-bottom: 4px solid #f6f6f6;
 	text-transform: uppercase;
 	letter-spacing: 1.6px;
 }
@@ -478,7 +481,7 @@ select {
 	line-height: 18px;
 	font-size: 10px;
 	border: none;
-	border-bottom: 3px solid #f6f6f6;
+	border-bottom: 4px solid #f6f6f6;
 	text-transform: uppercase;
 	letter-spacing: 1.6px;
 	-webkit-appearance: none;
@@ -521,7 +524,7 @@ select {
 	width: 0;
 	height: 0;
 	right: 20px;
-	top: 10px;
+	top: 12px;
 	border: 4px solid #ccc;
 	border-left: 4px solid transparent !important;
 	border-top: 4px solid transparent !important;
@@ -645,6 +648,7 @@ input:focus::-webkit-input-placeholder {
 
 .dropdown {
 	position: relative;
+	z-index: 1;
 }
 
 .dropdown .dropdown-menu {
@@ -655,7 +659,26 @@ input:focus::-webkit-input-placeholder {
 	background: #fff;
 	display: none;
 	padding: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-toggle {
+	position: relative;
+}
+
+.dropdown.open {
+	z-index: 2;
+}
+
+.dropdown.open:before {
+	position: fixed;
+	content: '';
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.65);
+	pointer-events: none;
 }
 
 .dropdown.open .dropdown-menu {
@@ -676,6 +699,16 @@ input:focus::-webkit-input-placeholder {
 	background: #fff;
 	box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 	outline: none;
+	z-index: 101;
+}
+
+.modal-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.65);
 	z-index: 101;
 	display: none;
 }
@@ -890,6 +923,10 @@ input:focus::-webkit-input-placeholder {
 	border: none;
 }
 
+.ui-spinner .ui-button .ui-icon {
+	background: none;
+}
+
 .ui-spinner .ui-button .ui-icon:before {
 	position: absolute;
 	content: '';
@@ -979,7 +1016,7 @@ header {
 
 header .header__wrapper {
 	height: 10vh;
-	min-height: 66px;
+	min-height: 60px;
 }
 
 header .header__wrapper:before,
@@ -1049,7 +1086,6 @@ header .header__btns {
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 22px;
-	letter-spacing: 1.5px;
 	transition: all 1s;
 	text-transform: none;
 }
@@ -1062,6 +1098,10 @@ header .header__btns {
 	bottom: -4px;
 	height: 2px;
 	background: #e8e8e8;
+}
+
+.menu__item > a:hover:before {
+	background: transparent;
 }
 
 .menu__item.active > a:before {
@@ -1221,7 +1261,7 @@ header .header__btns {
 	background: transparent url(../image/icon-down.png) no-repeat center;
 }
 
-.account__btn {
+.btn-custom {
 	padding: 0 12px;
 	padding-left: 40px;
 	line-height: 32px;
@@ -1379,8 +1419,15 @@ header .header__btns {
 */
 
 .goto-top {
+	display: inline-block;
+	margin-top: 10px;
 	font-size: 10px;
 	color: #767676;
+	border-bottom: 1px solid #cbcbcb;
+}
+
+.goto-top:hover {
+	border-bottom-color: transparent;
 }
 
 .main-wrapper {
@@ -1389,10 +1436,19 @@ header .header__btns {
 	display: flex;
 	padding: 0;
 	min-width: 320px;
-	min-height: 528px;
+	min-height: 480px;
 	height: 80vh;
-	padding-top: 10vh;
-	padding-bottom: 10vh;
+}
+
+.main-wrapper .column {
+	max-height: 80vh;
+	height: 100%;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
 }
 
 .main-wrapper .main-inner {
@@ -1444,7 +1500,7 @@ header .header__btns {
 	width: 50%;
 	border-bottom: 1px solid #d1d1d1;
 	font-size: 69px;
-	font-weight: 300;
+	font-weight: 100;
 	cursor: pointer;
 }
 
@@ -1463,7 +1519,7 @@ header .header__btns {
 .main-wrapper .main-inner .column-square .game-link:hover {
 	border-radius: 4px;
 	background: #fff;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
 }
 
 .column {
@@ -1476,23 +1532,24 @@ header .header__btns {
 .column-square {
 	width: 80vh;
 	height: 80vh;
-	min-width: 528px;
-	min-height: 528px;
+	min-width: 480px;
+	min-height: 480px;
 }
 
 .info-box {
 	position: relative;
 	padding: 15px;
-	margin: 35px 0;
+	margin: 5px	0;
 	border: 1px solid #d1d1d1;
 }
 
 .info-box__title {
 	position: absolute;
-	top: -15px;
+	top: -9px;
 	left: 20px;
 	padding: 0 15px;
-	line-height: 30px;
+	line-height: 18px;
+	font-size: 14px;
 	font-weight: bold;
 	color: #000;
 	background: #fff;
@@ -1506,6 +1563,10 @@ header .header__btns {
 	justify-content: space-between;
 	padding-left: 20px;
 	line-height: 24px;
+}
+
+.info-line .name {
+	font-size: 14px;
 }
 
 .info-line .img {
@@ -1550,7 +1611,7 @@ header .header__btns {
 }
 
 .run-box .run-line__toggle {
-	padding: 10px 0;
+	padding: 10px 0 12px;
 	padding-left: 30px;
 	font-size: 16px;
 	color: #000;
@@ -1619,18 +1680,18 @@ header .header__btns {
 
 .news-item__date {
 	display: block;
-	font-size: 9px;
+	font-size: 10px;
 	color: #d1d1d1;
 }
 
 .news-item__title {
-	font-size: 12px;
+	font-size: 13px;
 	color: #000;
 	line-height: 17px;
 }
 
 .banner-widget {
-	margin: 35px 0;
+	margin: 5px 0;
 }
 
 .banner-widget img {
@@ -1639,8 +1700,8 @@ header .header__btns {
 
 .main-menu {
 	position: absolute;
-	left: 50px;
-	right: 50px;
+	left: 5vh;
+	right: 5vh;
 	top: -30px;
 	display: -ms-flexbox;
 	display: flex;
@@ -1648,7 +1709,7 @@ header .header__btns {
 	justify-content: space-around;
 	margin: 0;
 	background: #fff;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
 }
 
 .main-menu__link {
@@ -1708,12 +1769,161 @@ header .header__btns {
 	text-align: center;
 }
 
+.game-rate {
+	margin-bottom: 60px;
+}
+
+.game-rate__title {
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 25px;
+	color: #8e8e8e;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.game-rate__num {
+	font-size: 39px;
+	line-height: 42px;
+	color: #000;
+}
+
+.game-stop {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.game-stop__btn {
+	padding-left: 46px;
+	background-size: auto 30px;
+	font-size: 14px;
+	line-height: 48px;
+	color: #000;
+	opacity: .4;
+}
+
+.game-stop__btn:hover {
+	opacity: 1;
+}
+
+.game-stop__giveup {
+	background-image: url(../image/flag.svg);
+}
+
+.game-stop__pat {
+	background-image: url(../image/handshake.svg);
+}
+
+.chat-box {
+	padding-bottom: 0;
+}
+
+.chat__title {
+	margin-bottom: 15px;
+	font-size: 15px;
+	color: #000;
+}
+
+.chat__inner {
+	height: 200px;
+	overflow: hidden;
+	border-bottom: 1px solid #d1d1d1;
+}
+
+.chat__line {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	margin-bottom: 10px;
+}
+
+.chat__line .name {
+	margin-right: 8px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.chat__bottom .get-msg {
+	margin: 0;
+	border: none;
+}
+
+.chat__bottom .get-msg::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	text-transform: none;
+	font-size: 14px;
+	color: #9e9595;
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.chat__bottom .get-msg::-moz-placeholder { /* Firefox 19+ */
+	text-transform: none;
+	font-size: 14px;
+	color: #9e9595;
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.chat__bottom .get-msg:-ms-input-placeholder { /* IE 10+ */
+	text-transform: none;
+	font-size: 14px;
+	color: #9e9595;
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.chat__bottom .get-msg:-moz-placeholder { /* Firefox 18- */
+	text-transform: none;
+	font-size: 14px;
+	color: #9e9595;
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.progress-box {
+	box-shadow: 0 0 20px #d1d1d5;
+}
+
+.progress-line {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+}
+
+.progress-line > div {
+	width: 40%;
+	padding-left: 15px;
+	line-height: 32px;
+	border-bottom: 1px solid #d1d1d1;
+	border-right: 1px solid #d1d1d1;
+}
+
+.progress-line > div:first-child {
+	width: 20%;
+}
+
+.progress-line > div:last-child {
+	border-right: none;
+}
+
+.progress-line:last-child > div {
+	border-bottom: none;
+}
+
 .footer {
 	position: relative;
 	bottom: 0;
 	width: 100%;
 	height: 10vh;
-	min-height: 66px;
+	max-height: 10vh;
+	overflow: hidden;
+	min-height: 60px;
 }
 
 .footer > .container.block-flex {

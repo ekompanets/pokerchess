@@ -123,31 +123,32 @@
 
 
     $('.dropdown-toggle').on('click', function(e) {
-      //  if (!$(e.target).closest(".dropdown").length) {
-      //   $('.dropdown').removeClass('open');
-      // }
+     if (!$(this).closest('.dropdown').hasClass('open'))  {
+      $('.dropdown').removeClass('open');
+    }
       $(this).closest('.dropdown').toggleClass('open');
     })
 
     $(document).on('click', function(e) {
       if (!$(e.target).closest(".dropdown").length) {
         $('.dropdown').removeClass('open');
+        console.log('drop')
       }
 
-      if ((!$(e.target).closest(".modal").length) && (!$(e.target).closest("[data-toggle=modal]").length)) {
-        $('.modal').hide();
+      if ((!$(e.target).closest(".modal").length) && (!$(e.target).closest("[data-toggle=modal]").length) && (!$(e.target).closest(".ui-datepicker").length)) {
+        $('.modal-wrapper').hide();
       }
       e.stopPropagation();
     });
 
     $('.modal-toggle').on('click', function(e) {
       var modalId = $(this).attr('data-target');
-      console.log(modalId)
+      
       $(modalId).show();
     })
 
     $('.modal .close').on('click', function(e) {
-      $(this).closest('.modal').hide();
+      $(this).closest('.modal-wrapper').hide();
     })
 
     $('select').on('click', function(e){
