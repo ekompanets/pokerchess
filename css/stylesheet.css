@@ -1994,13 +1994,92 @@ header .header__btns {
 	border-bottom: none;
 }
 
-.tournament .info-box {
-	width: 100%;
-	margin-top: 40px;
+.tournament-aside {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	width: 35%;
+	height: 100%;
 }
 
-.tournament .info-box__title {
+.tournament > .info-box {
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+	margin-top: 40px;
+	padding-left: 0;
+	padding-bottom: 0;
+	padding-top: 55px;
+}
+
+.tournament > .info-box .info-box {
+	border-left: none;
+}
+
+.tournament > .info-box .info-box.chat-box {
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	margin-top: 40px;
+	margin-bottom: 0;
+	border-bottom: none;
+}
+
+.tournament > .info-box .info-box.chat-box .chat__inner {
+	height: auto;
+}
+
+.tournament > .info-box .info-box__title {
 	font-size: 43px;
+}
+
+.tournament > .info-box .info-box .info-line .value {
+	width: 40%;
+	font-weight: bold;
+}
+
+.tournament-content {
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	padding-left: 80px;
+}
+
+.members__title {
+	font-size: 23px;
+	font-weight: 900;
+}
+
+.members__inner {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.members .member {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 9px 0;
+	margin-right: 18px;
+	padding: 0 20px;
+	font-size: 15px;
+	line-height: 36px;
+	color: #000;
+	border-radius: 16px;
+	border: 1px solid #d1d1d1;
+}
+
+.members .member .name {
+	margin-right: 8px;
+}
+
+.members .member .rate {
+	font-size: 11px;
+	line-height: 18px;
+	opacity: .5;
 }
 
 .footer {
