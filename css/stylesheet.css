@@ -1458,6 +1458,11 @@ header .header__btns {
 	align-items: center;
 }
 
+.main-wrapper .main-inner.tournament {
+	-ms-flex-align: stretch;
+	align-items: stretch;
+}
+
 .main-wrapper .main-inner .column-square {
 	position: relative;
 	-ms-flex-negative: 0;
@@ -1520,6 +1525,61 @@ header .header__btns {
 	border-radius: 4px;
 	background: #fff;
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+}
+
+.main-wrapper .main-inner .column-square.gamedesk {
+	padding: 0;
+	border: none;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: stretch;
+	align-items: stretch;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	height: 100%;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row {
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row .cell {
+	position: relative;
+	width: 12.5%;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row .cell img {
+	position: absolute;
+	max-width: 90%;
+	max-height: 90%;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row:nth-child(2n+1) .cell:nth-child(2n+1) {
+	background-color: #b58863;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row:nth-child(2n+1) .cell:nth-child(2n) {
+	background-color: #f0d9b5;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row:nth-child(2n) .cell:nth-child(2n+1) {
+	background-color: #f0d9b5;
+}
+
+.main-wrapper .main-inner .column-square.gamedesk .gamedesk__inner .row:nth-child(2n) .cell:nth-child(2n) {
+	background-color: #b58863;
 }
 
 .column {
@@ -1769,6 +1829,24 @@ header .header__btns {
 	text-align: center;
 }
 
+.game-timer {
+	font-size: 49px;
+}
+
+.game-starter {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	padding: 20px 0;
+	font-size: 15px;
+	color: #b2b2b2;
+}
+
+.game-starter .name {
+	padding-right: 30px;
+}
+
 .game-rate {
 	margin-bottom: 60px;
 }
@@ -1914,6 +1992,15 @@ header .header__btns {
 
 .progress-line:last-child > div {
 	border-bottom: none;
+}
+
+.tournament .info-box {
+	width: 100%;
+	margin-top: 40px;
+}
+
+.tournament .info-box__title {
+	font-size: 43px;
 }
 
 .footer {
